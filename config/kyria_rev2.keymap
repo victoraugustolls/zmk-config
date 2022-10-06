@@ -7,58 +7,88 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
 
 #define DEFAULT 0
 #define NUMERIC 1
 #define SYMBOL  2
 
 / {
-	behaviors {
-		hm: homerow_mods {
- 			compatible = "zmk,behavior-hold-tap";
-			label = "HOMEROW_MODS";
-			#binding-cells = <2>;
-			tapping-term-ms = <200>;
-			quick-tap-ms = <0>;
-			flavor = "tap-preferred";
-			bindings = <&kp>, <&kp>;
-		};
-	};
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings =
+                <&kp>,
+                <&kp>;
+        };
+    };
 
-	keymap {
-		compatible = "zmk,keymap";
+    macros {
+        walrus: walrus {
+            compatible = "zmk,behavior-macro";
+            label = "walrus";
+            #binding-cells = <0>;
+            bindings = <&kp COLON &kp EQUAL>;
+        };
+    };
 
-		default_layer {
-// ---------------------------------------------------------------------------------------------------------------------------------
-// |  ESC  |  Q  |  W  |  E  |  R  |   T   |                              |  Y  |  U  |   I   | O | P |  \   |
-// |  TAB  |  A  |  S  |  D  |  F  |   G   |                              |  H  |  J  |   K   | L | ; |  '   |
-// | SHIFT |  Z  |  X  |  C  |  V  |   B   | BT0  | BT1 |  | BT2 | BT CLR |  N  |  M  |   ,   | . | / | CTRL |
-//                     | GUI | TAB | SPACE | BSPC | DEL |  | DEL | LSHIFT | RET | ESC | R-ALT |
-			bindings = <
-	&kp ESC   &kp Q      &kp W      &kp E        &kp R       &kp T                                                                &kp Y    &kp U       &kp I        &kp O      &kp P         &kp BSLH
-	&kp TAB   &hm LGUI A &hm LALT S &hm LSHIFT D &hm LCTRL F &kp G                                                                &kp H    &hm LCTRL J &hm LSHIFT K &hm LALT L &hm LGUI SEMI &kp SQT
-	&kp LSHFT &kp Z      &kp X      &kp C        &kp V       &kp B     &bt BT_SEL 0 &bt BT_SEL 1  &bt BT_SEL 2 &bt BT_SEL 3       &kp N    &kp M       &kp COMMA    &kp DOT    &kp FSLH      &kp RCTRL
-	                                &kp LGUI     &kp TAB   &kp SPACE    &kp BSPC    &kp DEL       &kp DEL      &lt NUMERIC LSHIFT &kp RET  &kp ESC     &kp BSPC     &kp RALT
-			>;
+    keymap {
+        compatible = "zmk,keymap";
 
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-		};
+        default_layer {
+            // ---------------------------------------------------------------------------------------------------------------------------------
+            // |  ESC  |  Q  |  W  |  E  |  R  |   T   |                              |  Y  |  U  |   I   | O | P |  \   |
+            // |  TAB  |  A  |  S  |  D  |  F  |   G   |                              |  H  |  J  |   K   | L | ; |  '   |
+            // | SHIFT |  Z  |  X  |  C  |  V  |   B   | BT0  | BT1 |  | BT2 | BT CLR |  N  |  M  |   ,   | . | / | CTRL |
+            //                     | GUI | TAB | SPACE | BSPC | DEL |  | DEL | LSHIFT | RET | ESC | R-ALT |
 
-		numeric_layer {
-			// ---------------------------------------------------------------------------------------------------------------------------------
-// | | | 7 | 8 | 9 | , |                 | | + | * | | | |
-// | | | 4 | 5 | 6 | . |                 | | - | / | | | |
-// | | | 1 | 2 | 3 | = |        | |  | | | |   |   | | | |
-//         |   |   | 0 | LSHIFT | |  | | | |   |   |
-			bindings = <
-	&none &none &kp N7 &kp N8 &kp N9 &kp COMMA                                &none &kp PLUS  &kp ASTERISK &none &none &none
-	&none &none &kp N4 &kp N5 &kp N6 &kp DOT                                  &none &kp MINUS &kp SLASH    &none &none &none
-	&none &none &kp N1 &kp N2 &kp N3 &kp EQUAL &none      &none   &none &none &none &none     &none        &none &none &none
-	                   &none  &none  &kp N0    &kp LSHIFT &none   &none &none &none &none     &none
-			>;
+            bindings = <
+  &none       &kp Q       &kp W         &kp E        &kp R      &kp T                                                                 &kp Y        &kp U         &kp I       &kp O          &kp P  &kp BSLH
+  &none  &hm LGUI A  &hm LALT S  &hm LSHIFT D  &hm LCTRL F      &kp G                                                                 &kp H  &hm LCTRL J  &hm LSHIFT K  &hm LALT L  &hm LGUI SEMI   &kp SQT
+  &none       &kp Z       &kp X         &kp C        &kp V      &kp B  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_CLR         &kp N        &kp M     &kp COMMA     &kp DOT       &kp FSLH     &none
+                                        &none    &lt 3 TAB  &kp SPACE      &kp BSPC         &none         &none  &lt 1 LSHIFT  &lt 2 RETURN      &kp ESC      &kp BSPC
+            >;
 
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-		};
-	};
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        numeric_layer {
+            // ---------------------------------------------------------------------------------------------------------------------------------
+            // | | | 7 | 8 | 9 | , |                 | | + | * | | | |
+            // | | | 4 | 5 | 6 | . |                 | | - | / | | | |
+            // | | | 1 | 2 | 3 | = |        | |  | | | |   |   | | | |
+            //         |   |   | 0 | LSHIFT | |  | | | |   |   |
+
+            bindings = <
+  &none   &none  &kp N7  &kp N8  &kp N9  &kp COMMA                                       &none   &kp PLUS  &kp ASTERISK   &none   &none   &none
+  &none   &none  &kp N4  &kp N5  &kp N6    &kp DOT                                       &none  &kp MINUS     &kp SLASH   &none   &none   &none
+  &none   &none  &kp N1  &kp N2  &kp N3  &kp EQUAL       &none   &none   &none   &none   &none      &none         &none   &none   &none   &none
+                          &none   &none     &kp N0  &kp LSHIFT   &none   &none   &none   &none      &none         &none
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        SYMBOL {
+            bindings = <
+  &none  &kp SINGLE_QUOTE  &kp LESS_THAN  &kp GREATER_THAN  &kp DOUBLE_QUOTES   &kp DOT                                  &kp AMPERSAND   &kp COLON      &kp LEFT_BRACKET      &kp RIGHT_BRACKET   &kp PERCENT   &none
+  &none   &kp EXCLAMATION      &kp MINUS          &kp PLUS          &kp EQUAL  &kp HASH                                       &kp PIPE   &kp COLON  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp QUESTION   &none
+  &none         &kp CARET      &kp SLASH      &kp ASTERISK      &kp BACKSLASH   &walrus   &none   &none   &none   &none      &kp TILDE  &kp DOLLAR        &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp AT   &none
+                                                     &none              &none     &none   &none   &none   &none   &none          &none       &none                 &none
+            >;
+        };
+
+        NAVIGATION {
+            bindings = <
+ &trans  &trans  &trans  &trans  &trans  &trans                                  &trans          &trans          &trans        &trans           &trans  &trans
+ &trans  &trans  &trans  &trans  &trans  &trans                                  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans
+ &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans        &trans           &trans  &trans
+                         &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans
+            >;
+        };
+    };
 };

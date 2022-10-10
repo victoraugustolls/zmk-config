@@ -8,9 +8,12 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-#define DEFAULT 0
-#define NUMERIC 1
-#define SYMBOL  2
+#define DEFAULT    0
+#define NUMERIC    1
+#define SYMBOL     2
+#define NAVIGATION 3
+#define MEDIA      4
+#define FUN        5
 
 / {
     behaviors {
@@ -42,7 +45,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        default {
             // ---------------------------------------------------------------------------------------------------------------------------------
             // |  ESC  |  Q  |  W  |  E  |  R  |   T   |                              |  Y  |  U  |   I   | O | P |  \   |
             // |  TAB  |  A  |  S  |  D  |  F  |   G   |                              |  H  |  J  |   K   | L | ; |  '   |
@@ -55,11 +58,9 @@
   &none       &kp Z       &kp X               &kp C             &kp V      &kp B  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_CLR            &kp N             &kp M           &kp COMMA     &kp DOT       &kp FSLH     &none
                                               &none         &lt 3 ESC  &kp SPACE       &kp TAB         &none         &none  &lt 2 RETURN  &lt 1 BACKSPACE        &kp DELETE               &none
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        numeric_layer {
+        numeric {
             // ---------------------------------------------------------------------------------------------------------------------------------
             // | | | 7 | 8 | 9 | , |                 | | + | * | | | |
             // | | | 4 | 5 | 6 | . |                 | | - | / | | | |
@@ -72,11 +73,9 @@
   &none         &kp GRAVE  &kp N1  &kp N2   &kp N3      &kp BACKSLASH      &none   &none   &none   &none   &none           &none             &none         &none         &none   &none
                                     &none  &kp DOT             &kp N0  &kp MINUS   &none   &none   &none   &none           &none             &none
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        SYMBOL {
+        symbol {
             bindings = <
   &none  &kp SINGLE_QUOTE  &kp LESS_THAN  &kp GREATER_THAN  &kp DOUBLE_QUOTES   &kp DOT                                  &kp AMPERSAND   &kp COLON      &kp LEFT_BRACKET      &kp RIGHT_BRACKET   &kp PERCENT   &none
   &none   &kp EXCLAMATION      &kp MINUS          &kp PLUS          &kp EQUAL  &kp HASH                                       &kp PIPE   &kp COLON  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp QUESTION   &none
@@ -85,12 +84,30 @@
             >;
         };
 
-        NAVIGATION {
+        navigation {
             bindings = <
   &none         &none         &none             &none           &none   &none                                         &kp K_REDO     &kp K_PASTE      &kp K_COPY      &kp K_CUT       &kp K_UNDO   &none
   &none  &kp LEFT_GUI  &kp LEFT_ALT  &kp LEFT_CONTROL  &kp LEFT_SHIFT   &none                                       &kp CAPSLOCK  &kp LEFT_ARROW  &kp DOWN_ARROW   &kp UP_ARROW  &kp RIGHT_ARROW   &none
   &none         &none         &none             &none           &none   &none   &none   &none   &none       &none     &kp INSERT        &kp HOME     &kp PAGE_UP  &kp PAGE_DOWN          &kp END   &none
                                                 &none           &none   &none   &none   &none   &none  &kp RETURN  &kp BACKSPACE      &kp DELETE           &none
+            >;
+        };
+
+        media {
+            bindings = <
+  &none         &none         &none             &none           &none   &none                                         &kp K_REDO     &kp K_PASTE      &kp K_COPY      &kp K_CUT       &kp K_UNDO   &none
+  &none  &kp LEFT_GUI  &kp LEFT_ALT  &kp LEFT_CONTROL  &kp LEFT_SHIFT   &none                                       &kp CAPSLOCK  &kp LEFT_ARROW  &kp DOWN_ARROW   &kp UP_ARROW  &kp RIGHT_ARROW   &none
+  &none         &none         &none             &none           &none   &none   &none   &none   &none       &none     &kp INSERT        &kp HOME     &kp PAGE_UP  &kp PAGE_DOWN          &kp END   &none
+                                                &none           &none   &none   &none   &none   &none  &kp RETURN  &kp BACKSPACE      &kp DELETE           &none
+            >;
+        };
+
+        fun {
+            bindings = <
+  &none  &kp LEFT_BRACKET  &kp N7  &kp N8   &kp N9  &kp RIGHT_BRACKET                                      &none           &none             &none         &none         &none   &none
+  &none     &kp SEMICOLON  &kp N4  &kp N5   &kp N6          &kp EQUAL                                      &none  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_GUI   &none
+  &none         &kp GRAVE  &kp N1  &kp N2   &kp N3      &kp BACKSLASH      &none   &none   &none   &none   &none           &none             &none         &none         &none   &none
+                                    &none  &kp DOT             &kp N0  &kp MINUS   &none   &none   &none   &none           &none             &none
             >;
         };
     };

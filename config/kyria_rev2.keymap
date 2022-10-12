@@ -80,10 +80,10 @@
 
         symbol {
             bindings = <
-  &none  &kp SINGLE_QUOTE  &kp LESS_THAN  &kp GREATER_THAN  &kp DOUBLE_QUOTES   &kp DOT                                  &kp AMPERSAND   &kp COLON      &kp LEFT_BRACKET      &kp RIGHT_BRACKET   &kp PERCENT   &none
-  &none   &kp EXCLAMATION      &kp MINUS          &kp PLUS          &kp EQUAL  &kp HASH                                       &kp PIPE   &kp COLON  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp QUESTION   &none
-  &none         &kp CARET      &kp SLASH      &kp ASTERISK      &kp BACKSLASH   &walrus   &none   &none   &none   &none      &kp TILDE  &kp DOLLAR        &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp AT   &none
-                                                     &none              &none     &none   &none   &none   &none   &none          &none       &none                 &none
+  &none  &kp SINGLE_QUOTE  &kp LESS_THAN  &kp GREATER_THAN  &kp DOUBLE_QUOTES   &kp DOT                                  &kp AMPERSAND  &kp UNDERSCORE      &kp LEFT_BRACKET      &kp RIGHT_BRACKET   &kp PERCENT   &none
+  &none   &kp EXCLAMATION      &kp MINUS          &kp PLUS          &kp EQUAL  &kp HASH                                       &kp PIPE       &kp COLON  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp QUESTION   &none
+  &none         &kp CARET      &kp SLASH      &kp ASTERISK      &kp BACKSLASH   &walrus   &none   &none   &none   &none      &kp TILDE      &kp DOLLAR        &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp AT   &none
+                                                     &none              &none     &none   &none   &none   &none   &none          &none           &none                 &none
             >;
         };
 

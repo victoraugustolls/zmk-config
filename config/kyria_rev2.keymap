@@ -5,11 +5,11 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/rgb.h>
-#include <dt-bindings/zmk/ext_power.h>
-#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/rgb.h>
 
 #define DEFAULT    0
 #define NUMERIC    1
@@ -35,6 +35,32 @@
                 <&kp>,
                 <&kp>;
         };
+        lh_pht: left_hand_positional_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LEFT_HAND_POSITIONAL_HOLD_TAP";
+            bindings =
+                <&kp>,
+                <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <100>;
+            quick-tap-ms = <200>;
+            flavor = "tap-unless-interrupted";
+            hold-trigger-key-positions = <19 20 21 22 18 23>;
+        };
+        rh_pht: right_hand_positional_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "RIGHT_HAND_POSITIONAL_HOLD_PATH";
+            bindings =
+                <&kp>,
+                <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <100>;
+            quick-tap-ms = <200>;
+            flavor = "tap-unless-interrupted";
+            hold-trigger-key-positions = <13 16 15 14 17 12>;
+        };
     };
 
     macros {
@@ -54,14 +80,14 @@
 
         right_alt_right {
             bindings = <&kp RIGHT_ALT>;
-            key-positions = <20 19>;
+            key-positions = <19 21>;
             timeout-ms = <100>;
             layers = <0>;
         };
 
         right_alt_left {
             bindings = <&kp RALT>;
-            key-positions = <15 16>;
+            key-positions = <16 14>;
             timeout-ms = <100>;
             layers = <0>;
         };
@@ -78,10 +104,10 @@
             //                     | GUI | TAB | SPACE | BSPC | DEL |  | DEL | LSHIFT | RET | ESC | R-ALT |
 
             bindings = <
-&none       &kp Q       &kp W               &kp E             &kp R        &kp T                                                 &kp Y             &kp U               &kp I       &kp O          &kp P  &none
-&none  &hm LGUI A  &hm LALT S  &hm LEFT_CONTROL D  &hm LEFT_SHIFT F        &kp G                                                 &kp H  &hm LEFT_SHIFT J  &hm LEFT_CONTROL K  &hm LALT L  &hm LGUI SEMI  &none
-&none       &kp Z       &kp X               &kp C             &kp V        &kp B    &none  &none  &none         &none            &kp N             &kp M           &kp COMMA     &kp DOT       &kp FSLH  &none
-                                            &none         &lt 4 ESC  &lt 3 SPACE  &kp TAB  &none  &none  &lt 2 RETURN  &lt 1 BACKSPACE      &lt 5 DELETE               &none
+&none           &kp Q           &kp W                   &kp E                 &kp R                             &kp T                                                 &kp Y              &kp U                &kp I       &kp O               &kp P  &none
+&none  &lh_pht LGUI A  &lh_pht LALT S  &lh_pht LEFT_CONTROL D  &lh_pht LEFT_SHIFT F  &lh_pht LG(LA(LC(LEFT_SHIFT))) G                                                 &kp H  &hm RIGHT_SHIFT J  &hm RIGHT_CONTROL K  &hm LALT L  &hm RIGHT_GUI SEMI  &none
+&none           &kp Z           &kp X                   &kp C                 &kp V                             &kp B    &none  &none  &none         &none            &kp N              &kp M            &kp COMMA     &kp DOT            &kp FSLH  &none
+                                                        &none             &lt 4 ESC                       &lt 3 SPACE  &kp TAB  &none  &none  &lt 2 RETURN  &lt 1 BACKSPACE       &lt 5 DELETE                &none
             >;
         };
 

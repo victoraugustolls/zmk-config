@@ -86,7 +86,7 @@
         };
 
         right_alt_left {
-            bindings = <&kp RALT>;
+            bindings = <&kp RIGHT_ALT>;
             key-positions = <16 14>;
             timeout-ms = <100>;
             layers = <0>;

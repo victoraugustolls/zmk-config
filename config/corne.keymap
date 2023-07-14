@@ -17,11 +17,15 @@
         right_alt_right {
             bindings = <&kp RIGHT_ALT>;
             key-positions = <19 21>;
+            timeout-ms = <100>;
+            layers = <0>;
         };
 
         right_alt_left {
             bindings = <&kp RIGHT_ALT>;
-            key-positions = <14 16>;
+            key-positions = <16 14>;
+            timeout-ms = <100>;
+            layers = <0>;
         };
     };
 

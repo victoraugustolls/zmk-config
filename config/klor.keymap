@@ -86,10 +86,19 @@
         &kp Q        &kp W        &kp E         &kp R          &kp T   &kp Y   &kp U          &kp I         &kp O          &kp P
 &trans  &hml LGUI A  &hml LALT S  &hml LCTRL D  &hml LSHIFT F  &kp D   &kp H   &hmr RSHIFT J  &hmr RCTRL K  &hmr LALT L    &hmr RGUI SEMICOLON  &trans
 &trans  &kp Z        &kp X        &kp C         &kp V          &kp B   &kp N   &kp M          &kp COMMA     &kp PERIOD     &kp SLASH            &trans
-        &kp ESCAPE   &kp SPACE    &kp RETURN    &trans         &trans  &trans  &trans         &kp TAB       &kp BACKSPACE  &kp DELETE
+        &kp ESCAPE   &kp SPACE    &kp TAB       &trans         &trans  &trans  &trans         &kp RETURN    &kp BACKSPACE  &kp DELETE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        numeric {
+            bindings = <
+        &trans      &kp N7        &kp N8        &kp N9        &trans  &trans  &trans          &trans            &trans        &trans
+&trans  &trans      &kp NUMBER_4  &kp N5        &kp NUMBER_6  &trans  &trans  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_GUI  &trans
+&trans  &trans      &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans  &trans          &trans            &trans        &trans        &trans
+        &kp PERIOD  &kp N0        &trans        &trans        &trans  &trans  &trans          &trans            &trans        &trans
+            >;
         };
     };
 };

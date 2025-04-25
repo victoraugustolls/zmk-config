@@ -80,8 +80,8 @@
     keymap {
         compatible = "zmk,keymap";
 
-        base_layer {
-            label = "BASE";
+        default {
+            label = "DEFAULT";
             bindings = <
         &kp Q        &kp W        &kp E         &kp R          &kp T   &kp Y   &kp U          &kp I         &kp O          &kp P
 &trans  &hml LGUI A  &hml LALT S  &hml LCTRL D  &hml LSHIFT F  &kp D   &kp H   &hmr RSHIFT J  &hmr RCTRL K  &hmr LALT L    &hmr RGUI SEMICOLON  &trans
@@ -99,6 +99,30 @@
 &trans  &trans      &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans  &trans          &trans            &trans        &trans        &trans
         &kp PERIOD  &kp N0        &trans        &trans        &trans  &trans  &trans          &trans            &trans        &trans
             >;
+
+            label = "NUMERIC";
+        };
+
+        symbol {
+            bindings = <
+        &kp GRAVE        &kp LESS_THAN  &kp GREATER_THAN  &kp DOUBLE_QUOTES  &kp DOT    &kp AMPERSAND  &kp UNDERSCORE  &kp LBKT              &kp RBKT               &kp PERCENT
+&trans  &kp EXCLAMATION  &kp MINUS      &kp PLUS          &kp EQUAL          &kp POUND  &kp PIPE       &kp COLON       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp QUESTION  &trans
+&trans  &kp CARET        &kp FSLH       &kp ASTERISK      &kp BSLH           &kp GRAVE  &kp MINUS      &kp DOLLAR      &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp AT        &trans
+        &trans           &trans         &trans            &trans             &trans     &trans         &trans          &trans                &trans                 &trans
+            >;
+
+            label = "SYMBOL";
+        };
+
+        navigation {
+            bindings = <
+        &trans        &trans        &trans            &trans          &trans  &kp K_PASTE  &kp K_COPY     &kp K_CUT    &kp K_UNDO  &kp K_REDO
+&trans  &kp LEFT_GUI  &kp LEFT_ALT  &kp LEFT_CONTROL  &kp LEFT_SHIFT  &trans  &kp LEFT     &kp DOWN       &kp UP       &kp RIGHT   &kp CAPS    &trans
+&trans  &trans        &trans        &trans            &trans          &trans  &kp HOME     &kp PAGE_DOWN  &kp PAGE_UP  &kp END     &kp INSERT  &trans
+        &trans        &trans        &trans            &trans          &trans  &trans       &trans         &kp RET      &kp BSPC    &kp DELETE
+            >;
+
+            label = "NAVIGATION";
         };
     };
 };

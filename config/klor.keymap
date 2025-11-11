@@ -108,10 +108,10 @@
 
         symbol {
             bindings = <
-        &kp GRAVE        &kp LESS_THAN  &kp GREATER_THAN  &kp DOUBLE_QUOTES  &kp DOT    &kp AMPERSAND  &kp UNDERSCORE  &kp LBKT              &kp RBKT               &kp PERCENT
-&trans  &kp EXCLAMATION  &kp MINUS      &kp PLUS          &kp EQUAL          &kp POUND  &kp PIPE       &kp COLON       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp QUESTION  &trans
-&trans  &kp CARET        &kp FSLH       &kp ASTERISK      &kp BSLH           &kp GRAVE  &kp MINUS      &kp DOLLAR      &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp AT        &trans
-        &trans           &trans         &trans            &trans             &trans     &trans         &trans          &trans                &trans                 &trans
+        &kp SINGLE_QUOTE  &kp LESS_THAN  &kp GREATER_THAN  &kp DOUBLE_QUOTES  &kp DOT    &kp AMPERSAND  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp UNDERSCORE  &kp PERCENT
+&trans  &kp EXCLAMATION   &kp MINUS      &kp PLUS          &kp EQUAL          &kp POUND  &kp COLON      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp PIPE        &kp QUESTION  &trans
+&trans  &kp CARET         &kp FSLH       &kp ASTERISK      &kp BSLH           &kp GRAVE  &kp ASTERISK   &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp DOLLAR      &kp AT        &trans
+        &trans            &trans         &trans            &trans             &trans     &trans         &trans                &trans                 &trans          &trans
             >;
 
             label = "SYMBOL";

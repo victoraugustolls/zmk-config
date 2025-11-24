@@ -31,17 +31,15 @@ if SHIELD_KLOR_LEFT
         default "KLOR"
 
     config ZMK_SPLIT_BLE_ROLE_CENTRAL
-        default y
+        default n
 
 endif # LEFT
-
 
 
 if SHIELD_KLOR_LEFT || SHIELD_KLOR_RIGHT
 
     config ZMK_SPLIT
         default y
-
 
 if ZMK_DISPLAY
 

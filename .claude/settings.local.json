@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh run view:*)",
+      "Bash(gh run list:*)",
+      "Bash(cat:*)",
+      "WebFetch(domain:zmk.dev)",
+      "WebSearch"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

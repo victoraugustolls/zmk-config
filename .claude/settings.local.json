@@ -5,7 +5,9 @@
       "Bash(gh run list:*)",
       "Bash(cat:*)",
       "WebFetch(domain:zmk.dev)",
-      "WebSearch"
+      "WebSearch",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)"
     ],
     "deny": [],
     "ask": []

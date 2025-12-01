@@ -23,11 +23,9 @@
 /* Timeless homerow mods */
 // https://github.com/urob/zmk-config/tree/main#timeless-homerow-mods
 
-#define KEYS_L LT0 LT1 LT2 LT3 LT4 LT5 LM0 LM1 LM2 LM3 LM4 LM5 LB0 LB1 LB2 LB3 LB4 LB5  // left hand
-#define KEYS_R RT0 RT1 RT2 RT3 RT4 RT5 RM0 RM1 RM2 RM3 RM4 RM5 RB0 RB1 RB2 RB3 RB4 RB5  // right hand
-#define THUMBS LH3 LH2 LH1 LH0 RH0 RH1 RH2 RH3
-#define ENC_L  LEC
-#define ENC_R  REC
+#define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LM5 LB0 LB1 LB2 LB3 LB4 LB5  // Left hand
+#define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RM5 RB0 RB1 RB2 RB3 RB4 RB5  // Right hand
+#define THUMBS LH3 LH2 LH1 LH0 RH0 RH1 RH2 RH3 // Thumbs
 
 #define BASE       0
 #define NUMERIC    1
@@ -86,25 +84,16 @@
     keymap {
         compatible = "zmk,keymap";
 
-        base_layer {
-// ┌───────────────────────────────────────────────────────────┐
-label= "BASE"                                                  ;
-// └───────────────────────────────────────────────────────────┘
-/*           ┌─────────┬─────────┬─────────┬─────────┬─────────┐                    ┌─────────┬─────────┬─────────┬─────────┬─────────┐
-             │    Q    │    W    │    F    │    P    │    G    │                    │    J    │    L    │    U    │    Y    │    ;    │
-   ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤                    ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
-   │   TAB   │    A    │    R    │    S    │    T    │    D    │                    │    H    │    N    │    E    │    I    │    O    │    "    │
-   ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤╭────────╮╭────────╮├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
-   │   DEL   │    Z    │    X    │    C    │    V    │    B    ││  MUTE  ││PLY/PSE ││    K    │    M    │    ,    │    .    │    /    │    \    │
-   └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┼╰────────╯╰────────╯┼─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
-                                 │  CTRL   │  LOWER  │  SPACE  │   ALT   ││ CMD/WIN │  ENTER  │  RAISE  │  BSPCE  │
-                                 └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
+        base {
+            label = "BASE";
+
             bindings = <
-              &kp  Q        &kp  W          &kp  E          &kp  R           &kp T                          &kp  Y       &kp  U          &kp  I          &kp  O          &kp  P
-    &trans    &hml LGUI A   &hml LALT S     &hml LCTRL D    &hml LSHFT F     &kp G                          &hmr H       &hmr RSHFT J    &hmr RCTRL K    &hmr LALT L     &hmr RGUI SEMICOLON  &trans
-    &trans    &kp  Z        &kp  X          &kp  C          &kp  V           &kp B     &trans     &trans    &kp  N       &kp  M          &kp  COMMA      &kp  PERIOD     &kp  SLASH           &trans
-                                            &lt4 ESCAPE     &lt  3 SPACE     &kp TAB   &trans     &trans    &lt2 RETURN  &lt1 BACKSPACE  &lt  5 DELETE
-                        >;
+              &kp  Q        &kp  W          &kp  E          &kp  R           &kp T                          &kp Y         &kp  U               &kp  I          &kp  O          &kp  P
+    &trans    &hml LGUI A   &hml LALT S     &hml LCTRL D    &hml LSHFT F     &kp G                          &kp H         &hmr RSHFT J         &hmr RCTRL K    &hmr LALT L     &hmr RGUI SEMICOLON  &trans
+    &trans    &kp  Z        &kp  X          &kp  C          &kp  V           &kp B     &trans     &trans    &kp N         &kp  M               &kp  COMMA      &kp  PERIOD     &kp  SLASH           &trans
+                                            &lt  4 ESCAPE   &lt  3 SPACE     &kp TAB   &trans     &trans    &lt 2 RETURN  &lt  1 BACKSPACE     &lt  5 DELETE
+            >;
+
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_NEXT C_PREV>;
         };
 
@@ -121,10 +110,10 @@ label= "BASE"                                                  ;
 
         symbol {
             bindings = <
-        &kp SINGLE_QUOTE  &kp LESS_THAN  &kp GREATER_THAN  &kp LEFT_BRACKET      &kp DOUBLE_QUOTES  &kp AMPERSAND  &kp RIGHT_BRACKET      &kp UNDERSCORE  &kp PERCENT  &kp HASH
-&trans  &kp EXCLAMATION   &kp MINUS      &kp PLUS          &kp LEFT_PARENTHESIS  &kp COLON          &kp EQUAL      &kp RIGHT_PARENTHESIS  &kp SLASH       &kp PERIOD   &kp QUESTION  &trans
-&trans  &kp CARET         &kp SEMICOLON  &kp ASTERISK      &kp BSLH              &kp GRAVE          &kp ASTERISK   &kp RIGHT_BRACE        &kp DOLLAR      &kp PIPE     &kp AT        &trans
-        &trans            &trans         &trans            &trans                &trans             &trans         &trans                 &trans          &trans       &trans
+        &kp SINGLE_QUOTE  &kp LESS_THAN  &kp GREATER_THAN  &kp LEFT_BRACKET      &kp DOUBLE_QUOTES                  &kp AMPERSAND  &kp RIGHT_BRACKET      &kp UNDERSCORE  &kp PERCENT  &kp HASH
+&trans  &kp EXCLAMATION   &kp MINUS      &kp PLUS          &kp LEFT_PARENTHESIS  &kp COLON                          &kp EQUAL      &kp RIGHT_PARENTHESIS  &kp SLASH       &kp PERIOD   &kp QUESTION  &trans
+&trans  &kp CARET         &kp SEMICOLON  &kp ASTERISK      &kp BSLH              &kp GRAVE          &trans  &trans  &kp ASTERISK   &kp RIGHT_BRACE        &kp DOLLAR      &kp PIPE     &kp AT        &trans
+                                         &trans            &trans                &trans             &trans  &trans  &trans         &trans                 &trans
             >;
 
             label = "SYMBOL";
@@ -132,10 +121,10 @@ label= "BASE"                                                  ;
 
         navigation {
             bindings = <
-        &trans        &trans        &trans            &trans          &trans  &kp K_PASTE  &kp K_COPY     &kp K_CUT    &kp K_UNDO  &kp K_REDO
-&trans  &kp LEFT_GUI  &kp LEFT_ALT  &kp LEFT_CONTROL  &kp LEFT_SHIFT  &trans  &kp LEFT     &kp DOWN       &kp UP       &kp RIGHT   &kp CAPS    &trans
-&trans  &trans        &trans        &trans            &trans          &trans  &kp HOME     &kp PAGE_DOWN  &kp PAGE_UP  &kp END     &kp INSERT  &trans
-        &trans        &trans        &trans            &trans          &trans  &trans       &trans         &kp RET      &kp BSPC    &kp DELETE
+        &trans        &trans        &trans            &trans          &trans                        &kp K_PASTE &kp K_COPY     &kp K_CUT    &kp K_UNDO  &kp K_REDO
+&trans  &kp LEFT_GUI  &kp LEFT_ALT  &kp LEFT_CONTROL  &kp LEFT_SHIFT  &trans                        &kp LEFT    &kp DOWN       &kp UP       &kp RIGHT   &kp CAPS    &trans
+&trans  &trans        &trans        &trans            &trans          &trans    &trans    &trans    &kp HOME    &kp PAGE_DOWN  &kp PAGE_UP  &kp END     &kp INSERT  &trans
+                                    &trans            &trans          &trans    &trans    &trans    &kp RET     &kp BSPC       &kp DELETE
             >;
 
             label = "NAVIGATION";
@@ -143,10 +132,10 @@ label= "BASE"                                                  ;
 
         media {
             bindings = <
-        &trans        &trans        &trans            &trans          &trans  &trans          &trans             &trans           &trans        &trans
-&trans  &kp LEFT_GUI  &kp LEFT_ALT  &kp LEFT_CONTROL  &kp LEFT_SHIFT  &trans  &kp C_PREVIOUS  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_NEXT    &ext_power EP_TOG  &trans
-&trans  &trans        &trans        &trans            &trans          &trans  &out OUT_TOG    &bt BT_SEL 0       &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_CLR         &trans
-        &trans        &trans        &trans            &trans          &trans  &trans          &trans             &kp C_STOP       &kp C_PP      &kp C_MUTE
+        &trans        &trans        &trans            &trans          &trans                        &trans          &trans             &trans           &trans        &trans
+&trans  &kp LEFT_GUI  &kp LEFT_ALT  &kp LEFT_CONTROL  &kp LEFT_SHIFT  &trans                        &kp C_PREVIOUS  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp C_NEXT    &ext_power EP_TOG  &trans
+&trans  &trans        &trans        &trans            &trans          &trans     &trans    &trans   &out OUT_TOG    &bt BT_SEL 0       &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_CLR         &trans
+                                    &trans            &trans          &trans     &trans    &trans   &kp C_STOP      &kp C_PP           &kp C_MUTE
             >;
 
             label = "MEDIA";
@@ -154,10 +143,10 @@ label= "BASE"                                                  ;
 
         function {
             bindings = <
-        &kp F12  &kp F7  &kp F8  &kp F9  &kp PRINTSCREEN  &trans  &trans     &trans     &trans    &trans
-&trans  &kp F11  &kp F4  &kp F5  &kp F6  &kp SCROLLLOCK   &trans  &kp LSHFT  &kp LCTRL  &kp LALT  &kp LGUI  &trans
-&trans  &kp F10  &kp F3  &kp F2  &kp F1  &kp PAUSE_BREAK  &trans  &trans     &trans     &trans    &trans    &trans
-        &trans   &trans  &trans  &trans  &trans           &trans  &trans     &trans     &trans    &trans
+        &kp F12  &kp F7  &kp F8  &kp F9  &kp PRINTSCREEN                    &trans  &trans     &trans     &trans    &trans
+&trans  &kp F11  &kp F4  &kp F5  &kp F6  &kp SCROLLLOCK                     &trans  &kp LSHFT  &kp LCTRL  &kp LALT  &kp LGUI  &trans
+&trans  &kp F10  &kp F3  &kp F2  &kp F1  &kp PAUSE_BREAK    &trans  &trans  &trans  &trans     &trans     &trans    &trans    &trans
+                         &trans  &trans  &trans             &trans  &trans  &trans  &trans     &trans
             >;
 
             label = "FUN";

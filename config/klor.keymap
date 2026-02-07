@@ -112,7 +112,7 @@
             bindings = <
         &kp SINGLE_QUOTE  &kp LESS_THAN  &kp GREATER_THAN  &kp LEFT_BRACKET      &kp DOUBLE_QUOTES                  &kp AMPERSAND  &kp RIGHT_BRACKET      &kp UNDERSCORE  &kp PERCENT  &kp HASH
 &trans  &kp EXCLAMATION   &kp MINUS      &kp PLUS          &kp LEFT_PARENTHESIS  &kp COLON                          &kp EQUAL      &kp RIGHT_PARENTHESIS  &kp SLASH       &kp PERIOD   &kp QUESTION  &trans
-&trans  &kp CARET         &kp SEMICOLON  &kp ASTERISK      &kp BSLH              &kp GRAVE          &trans  &trans  &kp ASTERISK   &kp RIGHT_BRACE        &kp DOLLAR      &kp PIPE     &kp AT        &trans
+&trans  &kp CARET         &kp SEMICOLON  &kp ASTERISK      &kp LEFT_BRACE        &kp GRAVE          &trans  &trans  &kp ASTERISK   &kp RIGHT_BRACE        &kp DOLLAR      &kp PIPE     &kp AT        &trans
                                          &trans            &trans                &trans             &trans  &trans  &trans         &trans                 &trans
             >;
 

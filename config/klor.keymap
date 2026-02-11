@@ -54,7 +54,7 @@
 
         caps_lock {
             bindings = <&caps_word>;
-            key-positions = <38 42>;
+            key-positions = <36 43>;
             timeout-ms = <100>;
             layers = <0>;
         };
